@@ -69,18 +69,18 @@ def draw_letters
   return letter_hand
 end
 # displays letter hand
-letters_in_hand = draw_letters
-puts letters_in_hand
+# letters_in_hand = draw_letters
+# puts letters_in_hand
 
 # collects word from user
-print "Enter word: "
-word = gets.chomp.upcase
+# print "Enter word: "
+# word = gets.chomp.upcase
 
 # checks if word entered is valid
 def uses_available_letters?(input, letters_in_hand)
 flag = 0
 
-  input.split('').each do |letter|
+  input.upcase.split('').each do |letter|
       if !(letters_in_hand.include?(letter))
         flag += 1
       else
@@ -95,5 +95,5 @@ flag = 0
   end
 
 end
-
-puts uses_available_letters?(word, letters_in_hand)
+#
+# puts uses_available_letters?(word, letters_in_hand)
