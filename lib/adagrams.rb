@@ -83,6 +83,8 @@ flag = 0
   input.split('').each do |letter|
       if !(letters_in_hand.include?(letter))
         flag += 1
+      else
+        letters_in_hand.delete_at(letters_in_hand.index letter)
       end
   end
 
@@ -94,4 +96,4 @@ flag = 0
 
 end
 
-# puts uses_available_letters?(word, letters_in_hand)
+puts uses_available_letters?(word, letters_in_hand)
