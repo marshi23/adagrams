@@ -176,39 +176,40 @@ def highest_score_from_words(words)
   words.each_with_index do |word, i|
      word_score_hash[word] =  score_word(word)
   end
-  puts "#{word_score_hash} = word score hash"
-  max = word_score_hash.max_by { |k,v| v}
-  puts "#{max} = array with max score"
-  puts "The max score is #{max[1]}"
 
+  # puts "#{word_score_hash} = word score hash"
+
+  max = word_score_hash.max_by { |k,v| v  }
+
+  # puts "#{max} = array with max score"
+  # puts "The max score is #{max[1]}"
+
+  max = max[1]
   word_score_hash.each do |k, v|
-   if v == max[1]
+   if v == max
     tied_words << k
    end
   end
-  puts "The ties are #{tied_words}"
-  
+  # puts "The ties are #{tied_words}"
+
 winner = ""
  tied_words.each do |word|
     if word.length == 10 
       winner = word 
+      return winner
     end
+   
   end 
-  puts winner
-
+  winning_hash = {}
   winner = tied_words.min_by  { |w| w.length } 
-  p winner 
+  # p winner 
+  winning_hash[:word] = winner 
+  winning_hash[:score] = max 
 
-
-#   word_length = []
-#   if tied_words > 1
-#     tied_words.each do |word|
-#     word_length << word.length
-#     end 
-#     if word.length 
+  return  winning_hash
 end
 
 
-highest_score_from_words(['buckle', 'help', 'buckl', 'buckd'])
+p highest_score_from_words(['stormyyy', 'help', 'buck'])
 
 # puts uses_available_letters?(word, letters_in_hand)
