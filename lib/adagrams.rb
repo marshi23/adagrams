@@ -168,4 +168,47 @@ score = 0
 end
 
 
+# make definition for tracking score
+
+def highest_score_from_words(words) 
+  word_score_hash = {}
+  tied_words = []
+  words.each_with_index do |word, i|
+     word_score_hash[word] =  score_word(word)
+  end
+  puts "#{word_score_hash} = word score hash"
+  max = word_score_hash.max_by { |k,v| v}
+  puts "#{max} = array with max score"
+  puts "The max score is #{max[1]}"
+
+  word_score_hash.each do |k, v|
+   if v == max[1]
+    tied_words << k
+   end
+  end
+  puts "The ties are #{tied_words}"
+  
+winner = ""
+ tied_words.each do |word|
+    if word.length == 10 
+      winner = word 
+    end
+  end 
+  puts winner
+
+  winner = tied_words.min_by  { |w| w.length } 
+  p winner 
+
+
+#   word_length = []
+#   if tied_words > 1
+#     tied_words.each do |word|
+#     word_length << word.length
+#     end 
+#     if word.length 
+end
+
+
+highest_score_from_words(['buckle', 'help', 'buckl', 'buckd'])
+
 # puts uses_available_letters?(word, letters_in_hand)
