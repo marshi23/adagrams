@@ -170,7 +170,7 @@ end
 
 # make definition for tracking score
 
-def highest_score_from_words(words) 
+def highest_score_from(words) 
   word_score_hash = {}
   tied_words = []
   words.each_with_index do |word, i|
@@ -193,23 +193,39 @@ def highest_score_from_words(words)
   # puts "The ties are #{tied_words}"
 
 winner = ""
- tied_words.each do |word|
-    if word.length == 10 
-      winner = word 
-      return winner
-    end
-   
-  end 
-  winning_hash = {}
-  winner = tied_words.min_by  { |w| w.length } 
-  # p winner 
-  winning_hash[:word] = winner 
+winning_hash = {}
+winning_word = tied_words.select { |word| word.length == 10 } 
+if tied_words.any? { |word| word.length == 10  }
+  winning_hash[:word] = winning_word[0]
   winning_hash[:score] = max 
+else
+    winner = tied_words.min_by  { |w| w.length }
+    winning_hash[:word] = winner
+    winning_hash[:score] = max 
+end 
+
+
+
+#  tied_words.each do |word|
+#     if word.length == 10 
+#       winner = word 
+#       winning_hash[:word] = winner 
+#       winning_hash[:score] = max 
+
+#   return  winning_hash
+#     end
+   
+#   end 
+  
+#   winner = tied_words.min_by  { |w| w.length } 
+#   # p winner 
+#   winning_hash[:word] = winner 
+#   winning_hash[:score] = max 
 
   return  winning_hash
 end
 
 
-p highest_score_from_words(['stormyyy', 'help', 'buck'])
+p highest_score_from(['aaaaaaaaaa', 'z', 'buck'])
 
-# puts uses_available_letters?(word, letters_in_hand)
+
