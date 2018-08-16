@@ -60,6 +60,10 @@ def run_game
     while ( !(uses_available_letters?(user_input_word, letter_bank)) )
       display_needs_valid_input_message
       user_input_word = get_user_input
+      # puts "************"  
+      # puts "Letters in Bank"
+      # puts "#{letter_bank}"
+      # puts "************"
     end
 
     score = score_word(user_input_word)
