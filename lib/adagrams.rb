@@ -82,19 +82,17 @@ end
 # checks if word entered is valid
 def uses_available_letters?(input, letters_in_hand)
 flag = 0
+copy_letters_hand = letters_in_hand
 
   input.upcase.split('').each do |letter|
-      if !(letters_in_hand.include?(letter))
-        flag += 1
-      else
-        letters_in_hand.delete_at(letters_in_hand.index letter)
-      end
-  end
-
-  if flag > 0
-    return false
-  else
+    if !(letters_in_hand.include?(letter))
+      return false
+    else
+      # input.upcase.split('').each do |letter|
+      #   copy_letters_hand.delete_at(copy_letters_hand.index letter)
+      # end
     return true
+    end
   end
 
 end
