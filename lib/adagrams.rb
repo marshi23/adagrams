@@ -203,8 +203,8 @@ if tied_words.any? { |word| word.length == 10  }
 else
     winner = tied_words.min_by  { |w| w.length }
     winning_hash[:word] = winner
-    winning_hash[:score] = max
-end
+    winning_hash[:score] = max 
+end 
 
   return  winning_hash
 end
