@@ -210,16 +210,22 @@ end
 end
 
 # validates word in dictionary
+# def is_in_english_dict?(input)
+#   dictionary_array = CSV.read('assets/dictionary-english.csv').map do |word|
+#         word
+#     end
+#    dictionary_array = dictionary_array.flatten
+#    return dictionary_array.include?(input.downcase)
+# end
+
+
 def is_in_english_dict?(input)
-  dictionary_array = CSV.read('assets/dictionary-english.csv').map do |word|
-        word
-    end
-   dictionary_array = dictionary_array.flatten
-   return dictionary_array.include?(input.downcase)
+  dictionary_array = CSV.read('assets/dictionary-english.csv', headers: true).map  do |word|
+      word.to_h
+  end
+ return dictionary_array.any? { |word| word['Word'] == input}
 end
 
-
-
-
+# p is_in_english_dict?('jhfgkuftfuytdy')
 # p is_in_english_dict?("kjsryfegjwfyegw")
 # p highest_score_from(['aaaaaaaaaa', 'z', 'buck'])
