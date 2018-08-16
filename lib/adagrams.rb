@@ -204,24 +204,6 @@ else
     winning_hash[:score] = max 
 end 
 
-
-
-#  tied_words.each do |word|
-#     if word.length == 10 
-#       winner = word 
-#       winning_hash[:word] = winner 
-#       winning_hash[:score] = max 
-
-#   return  winning_hash
-#     end
-   
-#   end 
-  
-#   winner = tied_words.min_by  { |w| w.length } 
-#   # p winner 
-#   winning_hash[:word] = winner 
-#   winning_hash[:score] = max 
-
   return  winning_hash
 end
 
