@@ -1,4 +1,6 @@
 require 'pry'
+require 'csv'
+require 'awesome_print'
 # letters_hash = {
 # "A" => 9,
 # "B" => 2,
@@ -170,7 +172,7 @@ end
 
 # make definition for tracking score
 
-def highest_score_from(words) 
+def highest_score_from(words)
   word_score_hash = {}
   tied_words = []
   words.each_with_index do |word, i|
@@ -194,10 +196,10 @@ def highest_score_from(words)
 
 winner = ""
 winning_hash = {}
-winning_word = tied_words.select { |word| word.length == 10 } 
+winning_word = tied_words.select { |word| word.length == 10 }
 if tied_words.any? { |word| word.length == 10  }
   winning_hash[:word] = winning_word[0]
-  winning_hash[:score] = max 
+  winning_hash[:score] = max
 else
     winner = tied_words.min_by  { |w| w.length }
     winning_hash[:word] = winner
@@ -207,7 +209,17 @@ end
   return  winning_hash
 end
 
+# validates word in dictionary
+def is_in_english_dict?(input)
+  dictionary_array = CSV.read('assets/dictionary-english.csv').map do |word|
+        word
+    end
+   dictionary_array = dictionary_array.flatten
+   return dictionary_array.include?(input.downcase)
+end
 
-p highest_score_from(['aaaaaaaaaa', 'z', 'buck'])
 
 
+
+# p is_in_english_dict?("kjsryfegjwfyegw")
+# p highest_score_from(['aaaaaaaaaa', 'z', 'buck'])
