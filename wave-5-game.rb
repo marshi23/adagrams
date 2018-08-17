@@ -63,13 +63,10 @@ def run_game
     user_input_word = get_user_input
 
     while ( (!(uses_available_letters?(user_input_word, letter_bank)) ) || (!(is_in_english_dict?(user_input_word))) )
-      p letter_bank
-      puts "*****I'm checkin the dictionary!!!!*******"
-
+      
       if !(uses_available_letters?(user_input_word, letter_bank))
         display_not_in_letter_bank_message
       elsif !(is_in_english_dict?(user_input_word))
-        puts "*****I'm checkin the dictionary!!!!*******"
         display_not_in_dictionary_message
       end
       user_input_word = get_user_input
