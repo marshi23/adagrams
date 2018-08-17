@@ -46,17 +46,20 @@ end
 # checks if word entered is valid
 def uses_available_letters?(input, letters_in_hand)
 flag = 0
-copy_letters_hand = letters_in_hand
+copy_letters_hand = letters_in_hand.dup
 
   input.upcase.split('').each do |letter|
-    if !(letters_in_hand.include?(letter))
-      return false
-    else
-      # input.upcase.split('').each do |letter|
-      #   copy_letters_hand.delete_at(copy_letters_hand.index letter)
-      # end
+      if !(letters_in_hand.include?(letter))
+        flag += 1
+      else
+        copy_letters_hand.delete_at(copy_letters_hand.index letter)
+      end
+  end
+
+  if flag > 0
+    return false
+  else
     return true
-    end
   end
 
 end
@@ -113,7 +116,8 @@ def highest_score_from(words)
     word_score_hash[word] =  score_word(word)
   end
 
-  max = word_score_hash.max_by { |k,v| v }[1]
+  max = word_score_hash.max_by { |k,v| v  }[1]
+  # max = max[1]
 
   word_score_hash.each do |k, v|
    if v == max
