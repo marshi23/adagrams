@@ -57,14 +57,8 @@ copy_letters_hand = letters_in_hand.dup
   end
 
   if flag > 0
-    puts "FALSE"
-    p letters_in_hand
-    p copy_letters_hand
     return false
   else
-    puts "True"
-    p letters_in_hand
-    p copy_letters_hand
     return true
   end
 
